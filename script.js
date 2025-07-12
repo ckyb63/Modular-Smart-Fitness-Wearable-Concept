@@ -773,7 +773,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Initialize overview cards
-        const overviewCards = document.querySelectorAll('.overview-card, .skill-category');
+        const overviewCards = document.querySelectorAll('.overview-card, .skill-category, .development-card');
         
         overviewCards.forEach(card => {
             let isExpanded;
@@ -797,29 +797,65 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Add event listeners for overview collapse buttons
+    // Add event listeners for collapse buttons
     document.addEventListener('click', function(e) {
         // Timeline collapse functionality
-        if (e.target.closest('.collapse-btn')) {
+        if (e.target.closest('.collapsible-header')) {
             const timelineContent = e.target.closest('.timeline-content');
             if (timelineContent) {
+                e.preventDefault();
                 toggleTimelineContent(timelineContent);
             }
         }
         
         // Project card collapse functionality
-        if (e.target.closest('.project-collapse-btn')) {
+        if (e.target.closest('.project-collapsible-header')) {
             const projectCard = e.target.closest('.project-card');
             if (projectCard) {
+                e.preventDefault();
                 toggleProjectCard(projectCard);
             }
         }
         
-        // Overview card collapse functionality
-        if (e.target.closest('.overview-collapse-btn')) {
-            const overviewCard = e.target.closest('.overview-card, .skill-category');
+        // Overview card collapse functionality (Skills section and Technology section)
+        if (e.target.closest('.overview-collapsible-header')) {
+            const overviewCard = e.target.closest('.overview-card, .skill-category, .development-card');
             if (overviewCard) {
+                e.preventDefault();
                 toggleOverviewCard(overviewCard);
+            }
+        }
+    });
+
+    // Add keyboard event listeners for accessibility
+    document.addEventListener('keydown', function(e) {
+        // Only handle Enter and Space keys
+        if (e.key === 'Enter' || e.key === ' ') {
+            // Timeline collapse functionality
+            if (e.target.closest('.collapsible-header')) {
+                const timelineContent = e.target.closest('.timeline-content');
+                if (timelineContent) {
+                    e.preventDefault();
+                    toggleTimelineContent(timelineContent);
+                }
+            }
+            
+            // Project card collapse functionality
+            if (e.target.closest('.project-collapsible-header')) {
+                const projectCard = e.target.closest('.project-card');
+                if (projectCard) {
+                    e.preventDefault();
+                    toggleProjectCard(projectCard);
+                }
+            }
+            
+            // Overview card collapse functionality (Skills section and Technology section)
+            if (e.target.closest('.overview-collapsible-header')) {
+                const overviewCard = e.target.closest('.overview-card, .skill-category, .development-card');
+                if (overviewCard) {
+                    e.preventDefault();
+                    toggleOverviewCard(overviewCard);
+                }
             }
         }
     });

@@ -713,6 +713,38 @@ main {
     display: block;
     width: 100%;
     cursor: pointer;
+    border-radius: var(--border-radius);
+}
+
+.collapsible-header:hover .collapse-btn {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    border-color: var(--primary-color);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.collapsible-header:hover .collapse-btn i {
+    color: white;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+.collapsible-header:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.collapsible-header:focus .collapse-btn {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    border-color: var(--primary-color);
+    transform: translateY(-50%) scale(1.05);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.collapsible-header:focus .collapse-btn i {
+    color: white;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
 }
 
 .collapsible-header .job-header {
@@ -750,7 +782,7 @@ main {
     justify-content: center;
     z-index: 10;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    pointer-events: auto;
+    pointer-events: none; /* Let parent handle clicks */
 }
 
 .collapse-btn:hover {
@@ -1037,15 +1069,42 @@ main {
     }
     
     .project-header {
+        display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: flex-start;
+        align-items: center;
+        gap: 0.75rem;
+    }
+    
+    .project-header h3 {
+        margin: 0;
+        flex: 1 1 280px;
+        max-width: 100%;
+        line-height: 1.3;
+    }
+    
+    .project-type {
+        margin: 0;
+        flex: 0 0 auto;
+        align-self: center;
+        order: 2;
+    }
+    
+    .project-type.featured {
+        margin: 0;
+        flex: 0 0 auto;
+        align-self: center;
+        order: 2;
     }
     
     .project-collapsible-header .project-header {
+        display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: flex-start;
+        align-items: center;
+        gap: 0.75rem;
     }
 }
 
@@ -1073,7 +1132,7 @@ main {
 .project-header {
     display: flex;
     flex-wrap: wrap;
-    align-items: start;
+    align-items: center;
     gap: 0.75rem;
     margin-bottom: 1rem;
 }
@@ -1084,6 +1143,8 @@ main {
     color: var(--text-primary);
     flex: 1 1 280px; /* Wrap when title needs more than ~280px */
     max-width: 100%; /* Allow text to wrap within the h3 */
+    line-height: 1.5;
+    margin: 0;
 }
 
 .project-type {
@@ -1096,6 +1157,10 @@ main {
     white-space: nowrap;
     flex: 0 0 auto; /* Don't grow or shrink */
     order: 2; /* Ensure tag comes after title when wrapping */
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    height: fit-content;
 }
 
 .project-card p {
@@ -1480,6 +1545,15 @@ footer {
         font-size: 2.5rem;
     }
     
+    .subtitle {
+        font-size: 1.25rem;
+    }
+    
+    .concept-badge {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
     .contact-links {
         flex-direction: column;
         align-items: center;
@@ -1572,16 +1646,26 @@ footer {
     .project-header {
         flex-direction: column;
         gap: 0.5rem;
+        align-items: flex-start;
     }
     
     .project-header h3 {
         flex: none; /* Reset flex on mobile */
         max-width: none; /* Reset max-width */
+        margin-bottom: 0;
+        width: 100%;
     }
     
     .project-type {
         order: unset; /* Reset order on mobile */
         align-self: flex-start; /* Align to start */
+        margin-top: 1rem;
+        width: auto;
+    }
+    
+    .project-type.featured {
+        margin-top: 1.5rem;
+        margin-bottom: 0;
     }
     
     .timeline {
@@ -2012,6 +2096,112 @@ footer {
     }
     
     .skill-category .overview-collapse-btn {
+        display: none;
+    }
+}
+
+/* Apply same collapse behavior to development-card */
+.development-card .overview-collapsible-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+.development-card .overview-collapsible-header h3 {
+    margin-bottom: 0;
+    flex-grow: 1;
+}
+
+.development-card .overview-collapse-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    display: none;
+    flex-shrink: 0;
+    margin-left: 1rem;
+}
+
+.development-card .overview-collapse-btn:hover {
+    background: var(--background-alt);
+    color: var(--secondary-color);
+}
+
+.development-card .overview-collapse-btn:active {
+    transform: scale(0.95);
+}
+
+.development-card .overview-collapse-btn i {
+    transition: var(--transition);
+}
+
+.development-card .overview-content {
+    transition: var(--transition);
+}
+
+.development-card.collapsed .overview-content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    margin-top: 0;
+}
+
+.development-card.collapsed .overview-collapse-btn i {
+    transform: rotate(180deg);
+}
+
+/* Mobile-specific collapse behavior for development-card */
+@media (max-width: 768px) {
+    .development-card .overview-content {
+        max-height: 0 !important;
+        overflow: hidden !important;
+        opacity: 0 !important;
+        margin-top: 0 !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    .development-card.expanded .overview-content {
+        max-height: 500px !important;
+        opacity: 1 !important;
+        margin-top: 1rem !important;
+    }
+    
+    .development-card .overview-collapse-btn {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .development-card .overview-collapse-btn i {
+        transform: rotate(180deg) !important;
+    }
+    
+    .development-card.expanded .overview-collapse-btn i {
+        transform: rotate(0deg) !important;
+    }
+}
+
+/* Desktop behavior for development-card */
+@media (min-width: 769px) {
+    .development-card .overview-content {
+        max-height: none;
+        opacity: 1;
+        margin-top: 0;
+    }
+    
+    .development-card.collapsed .overview-content {
+        max-height: none;
+        opacity: 1;
+        margin-top: 0;
+    }
+    
+    .development-card .overview-collapse-btn {
         display: none;
     }
 }
