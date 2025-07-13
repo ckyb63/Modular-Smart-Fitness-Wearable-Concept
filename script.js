@@ -854,7 +854,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 const overviewCard = e.target.closest('.overview-card, .skill-category, .development-card');
                 if (overviewCard) {
                     e.preventDefault();
-                    toggleOverviewCard(overviewCard);
+                    // Use enhanced toggle on mobile to respect auto-expand system
+                    if (window.innerWidth <= 768) {
+                        enhancedToggleOverviewCard(overviewCard);
+                    } else {
+                        toggleOverviewCard(overviewCard);
+                    }
                 }
             }
         }

@@ -88,6 +88,26 @@ header::after {
     letter-spacing: -0.02em;
 }
 
+.hero-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero-logo-icon {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+}
+
+.hero-logo h1 {
+    margin: 0;
+    align-self: center;
+}
+
 .subtitle {
     font-size: 1.5rem;
     font-weight: 500;
@@ -149,11 +169,39 @@ nav {
 .nav-container {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     padding: 0.5rem 1rem;
     max-width: 1200px;
     margin: 0 auto;
     height: 100%;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.nav-logo .logo {
+    height: 40px;
+    width: auto;
+    max-width: 180px;
+}
+
+.nav-logo .logo-full {
+    display: block;
+}
+
+.nav-logo .logo-icon {
+    display: none;
+    width: 40px;
+    height: 40px;
+    max-width: none;
+}
+
+.nav-links {
+    flex: 1;
+    justify-content: center;
 }
 
 .nav-links {
@@ -683,11 +731,13 @@ main {
     font-size: 0.95rem;
     margin-bottom: 0;
     flex: 1;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .job-responsibilities {
     list-style: none;
     padding: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .job-responsibilities li {
@@ -696,6 +746,7 @@ main {
     margin-bottom: 0.5rem;
     color: var(--text-secondary);
     line-height: 1.6;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .job-responsibilities li::before {
@@ -808,12 +859,12 @@ main {
 }
 
 .collapse-btn i {
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .job-details {
     overflow: hidden;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Only hide responsibilities and links when collapsed */
@@ -824,6 +875,8 @@ main {
     margin-top: 0;
     margin-bottom: 0;
     overflow: hidden;
+    transform: translateY(-8px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .timeline-content.collapsed .collapse-btn {
@@ -849,6 +902,8 @@ main {
         margin-top: 0;
         margin-bottom: 0;
         overflow: hidden;
+        transform: translateY(-8px);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
     .timeline-content.expanded .job-responsibilities,
@@ -857,6 +912,8 @@ main {
         opacity: 1;
         margin-top: 0.5rem;
         margin-bottom: 0;
+        transform: translateY(0);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
     .timeline-content .collapse-btn {
@@ -884,6 +941,8 @@ main {
     .timeline-content .experience-links {
         max-height: none;
         opacity: 1;
+        transform: translateY(0);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
     .timeline-content.collapsed .job-responsibilities,
@@ -891,9 +950,9 @@ main {
         max-height: 0;
         opacity: 0;
         overflow: hidden;
+        transform: translateY(-8px);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
-
-
 }
 
 /* Project Cards Collapsible Functionality */
@@ -1405,6 +1464,24 @@ footer {
     -webkit-text-fill-color: transparent;
 }
 
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.footer-logo-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+}
+
+.footer-logo .footer-title {
+    margin: 0;
+    align-self: center;
+}
+
 .footer-text {
     color: rgba(255, 255, 255, 0.85);
     margin: 0;
@@ -1545,6 +1622,15 @@ footer {
         font-size: 2.5rem;
     }
     
+    .hero-logo {
+        gap: 1rem;
+    }
+    
+    .hero-logo-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
     .subtitle {
         font-size: 1.25rem;
     }
@@ -1565,6 +1651,27 @@ footer {
         display: block;
     }
     
+    .nav-container {
+        position: relative;
+    }
+    
+    .nav-logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .nav-logo .logo-full {
+        display: none;
+    }
+    
+    .nav-logo .logo-icon {
+        display: block;
+    }
+    
     .nav-links {
         position: fixed;
         top: 0;
@@ -1572,18 +1679,54 @@ footer {
         flex-direction: column;
         background: white;
         height: 100vh;
+        max-height: 100vh;
         width: 280px;
-        padding: 80px 20px 20px;
+        padding: 80px 20px 40px;
         box-shadow: var(--shadow-xl);
         transition: left 0.3s ease;
         z-index: 100;
         gap: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        scrollbar-color: var(--primary-color) transparent;
+    }
+    
+    .nav-links::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 20px;
+        background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.9));
+        pointer-events: none;
+    }
+    
+    .nav-links::-webkit-scrollbar {
+        width: 4px;
+    }
+    
+    .nav-links::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    
+    .nav-links::-webkit-scrollbar-thumb {
+        background-color: var(--primary-color);
+        border-radius: 2px;
+        opacity: 0.7;
+    }
+    
+    .nav-links::-webkit-scrollbar-thumb:hover {
+        background-color: var(--secondary-color);
     }
     
     .nav-links li {
         width: 100%;
         padding: 0.75rem 0;
         border-bottom: 1px solid var(--border-color);
+        flex-shrink: 0;
     }
     
     .nav-links a {
@@ -1726,6 +1869,15 @@ footer {
         font-size: 1.25rem;
     }
     
+    .hero-logo {
+        gap: 0.75rem;
+    }
+    
+    .hero-logo-icon {
+        width: 50px;
+        height: 50px;
+    }
+    
     .contact-link {
         width: 100%;
         justify-content: center;
@@ -1733,6 +1885,20 @@ footer {
     
     .content-section h2 {
         font-size: 1.75rem;
+    }
+    
+    .nav-links {
+        width: 100%;
+        padding: 70px 15px 30px;
+    }
+    
+    .nav-links li {
+        padding: 0.5rem 0;
+    }
+    
+    .nav-links a {
+        font-size: 1rem;
+        padding: 0.4rem 0;
     }
     
     /* All grids are already single column from 768px breakpoint */
@@ -1940,9 +2106,19 @@ footer {
     margin-top: 0;
 }
 
+.overview-card.collapsed .overview-collapse-btn {
+    color: var(--primary-color);
+    background: rgba(124, 58, 237, 0.1);
+    border-radius: var(--border-radius);
+}
+
 .overview-card.collapsed .overview-collapse-btn i {
     transform: rotate(180deg);
+    color: var(--primary-color);
+    filter: drop-shadow(0 0 4px rgba(124, 58, 237, 0.3));
 }
+
+/* Auto-expand visual indicators removed - no longer needed */
 
 /* Mobile-specific collapse behavior for overview-card */
 @media (max-width: 768px) {
@@ -1951,13 +2127,15 @@ footer {
         overflow: hidden !important;
         opacity: 0 !important;
         margin-top: 0 !important;
-        transition: all 0.3s ease !important;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        transform: translateY(-5px);
     }
     
     .overview-card.expanded .overview-content {
         max-height: 500px !important;
         opacity: 1 !important;
         margin-top: 1rem !important;
+        transform: translateY(0);
     }
     
     .overview-card .overview-collapse-btn {
@@ -1966,12 +2144,27 @@ footer {
         justify-content: center;
     }
     
+    .overview-card .overview-collapse-btn {
+        color: var(--primary-color) !important;
+        background: rgba(124, 58, 237, 0.1) !important;
+        border-radius: var(--border-radius) !important;
+    }
+    
     .overview-card .overview-collapse-btn i {
         transform: rotate(180deg) !important;
+        color: var(--primary-color) !important;
+        filter: drop-shadow(0 0 4px rgba(124, 58, 237, 0.3)) !important;
+    }
+    
+    .overview-card.expanded .overview-collapse-btn {
+        background: none !important;
+        color: var(--primary-color) !important;
     }
     
     .overview-card.expanded .overview-collapse-btn i {
         transform: rotate(0deg) !important;
+        color: var(--primary-color) !important;
+        filter: none !important;
     }
 }
 
@@ -2046,8 +2239,16 @@ footer {
     margin-top: 0;
 }
 
+.skill-category.collapsed .overview-collapse-btn {
+    color: var(--primary-color);
+    background: rgba(124, 58, 237, 0.1);
+    border-radius: var(--border-radius);
+}
+
 .skill-category.collapsed .overview-collapse-btn i {
     transform: rotate(180deg);
+    color: var(--primary-color);
+    filter: drop-shadow(0 0 4px rgba(124, 58, 237, 0.3));
 }
 
 /* Mobile-specific collapse behavior for skill-category */
@@ -2057,13 +2258,15 @@ footer {
         overflow: hidden !important;
         opacity: 0 !important;
         margin-top: 0 !important;
-        transition: all 0.3s ease !important;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        transform: translateY(-5px);
     }
     
     .skill-category.expanded .overview-content {
         max-height: 500px !important;
         opacity: 1 !important;
         margin-top: 1rem !important;
+        transform: translateY(0);
     }
     
     .skill-category .overview-collapse-btn {
@@ -2072,12 +2275,27 @@ footer {
         justify-content: center;
     }
     
+    .skill-category .overview-collapse-btn {
+        color: var(--primary-color) !important;
+        background: rgba(124, 58, 237, 0.1) !important;
+        border-radius: var(--border-radius) !important;
+    }
+    
     .skill-category .overview-collapse-btn i {
         transform: rotate(180deg) !important;
+        color: var(--primary-color) !important;
+        filter: drop-shadow(0 0 4px rgba(124, 58, 237, 0.3)) !important;
+    }
+    
+    .skill-category.expanded .overview-collapse-btn {
+        background: none !important;
+        color: var(--primary-color) !important;
     }
     
     .skill-category.expanded .overview-collapse-btn i {
         transform: rotate(0deg) !important;
+        color: var(--primary-color) !important;
+        filter: none !important;
     }
 }
 
@@ -2152,8 +2370,16 @@ footer {
     margin-top: 0;
 }
 
+.development-card.collapsed .overview-collapse-btn {
+    color: var(--primary-color);
+    background: rgba(124, 58, 237, 0.1);
+    border-radius: var(--border-radius);
+}
+
 .development-card.collapsed .overview-collapse-btn i {
     transform: rotate(180deg);
+    color: var(--primary-color);
+    filter: drop-shadow(0 0 4px rgba(124, 58, 237, 0.3));
 }
 
 /* Mobile-specific collapse behavior for development-card */
@@ -2163,13 +2389,15 @@ footer {
         overflow: hidden !important;
         opacity: 0 !important;
         margin-top: 0 !important;
-        transition: all 0.3s ease !important;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        transform: translateY(-5px);
     }
     
     .development-card.expanded .overview-content {
         max-height: 500px !important;
         opacity: 1 !important;
         margin-top: 1rem !important;
+        transform: translateY(0);
     }
     
     .development-card .overview-collapse-btn {
@@ -2178,12 +2406,27 @@ footer {
         justify-content: center;
     }
     
+    .development-card .overview-collapse-btn {
+        color: var(--primary-color) !important;
+        background: rgba(124, 58, 237, 0.1) !important;
+        border-radius: var(--border-radius) !important;
+    }
+    
     .development-card .overview-collapse-btn i {
         transform: rotate(180deg) !important;
+        color: var(--primary-color) !important;
+        filter: drop-shadow(0 0 4px rgba(124, 58, 237, 0.3)) !important;
+    }
+    
+    .development-card.expanded .overview-collapse-btn {
+        background: none !important;
+        color: var(--primary-color) !important;
     }
     
     .development-card.expanded .overview-collapse-btn i {
         transform: rotate(0deg) !important;
+        color: var(--primary-color) !important;
+        filter: none !important;
     }
 }
 
