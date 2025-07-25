@@ -24,10 +24,36 @@ document.addEventListener('DOMContentLoaded', function() {
         navOverlay.addEventListener('click', closeMobileMenu);
     }
     
-    // Close menu when a link is clicked
+    // Mobile dropdown functionality
+    const dropdowns = document.querySelectorAll('.nav-links .dropdown > a');
+    
+    dropdowns.forEach(dropdown => {
+        dropdown.addEventListener('click', function(e) {
+            // Only handle on mobile
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                const dropdownParent = this.parentElement;
+                const isActive = dropdownParent.classList.contains('active');
+                
+                // Close all other dropdowns
+                document.querySelectorAll('.nav-links .dropdown').forEach(d => {
+                    d.classList.remove('active');
+                });
+                
+                // Toggle current dropdown
+                if (!isActive) {
+                    dropdownParent.classList.add('active');
+                }
+            }
+        });
+    });
+    
+    // Close menu when a link is clicked (but not dropdown toggles)
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
-            if (body.classList.contains('menu-open')) {
+            // Don't close menu if it's a dropdown toggle on mobile
+            if (body.classList.contains('menu-open') && 
+                !(window.innerWidth <= 768 && link.parentElement.classList.contains('dropdown'))) {
                 closeMobileMenu();
             }
         });
@@ -170,7 +196,13 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             
             // Update navigation active state for same-page links only
+            // Exclude dropdown parent items (they don't have href="#section")
             navLinksArray.forEach(link => {
+                // Skip dropdown parent items
+                if (link.parentElement.classList.contains('dropdown')) {
+                    return;
+                }
+                
                 link.classList.remove('active');
                 if (link.getAttribute('href') === `#${current}`) {
                     link.classList.add('active');
@@ -180,11 +212,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Set active page in navigation for multi-page structure
+    // Navigation highlighting system
     function setActivePageNav() {
         const currentPage = window.location.pathname.split('/').pop() || 'index.html';
         const navLinks = document.querySelectorAll('nav ul li a');
         
         navLinks.forEach(link => {
+            // Skip dropdown parent items (they don't link to actual pages)
+            if (link.parentElement.classList.contains('dropdown')) {
+                return;
+            }
+            
             link.classList.remove('active');
             const linkPath = link.getAttribute('href');
             
@@ -198,8 +236,67 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Scroll-based navigation highlighting
+    function updateActiveNavOnScroll() {
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('nav ul li a');
+        const dropdownParents = document.querySelectorAll('nav ul li.dropdown > a');
+        
+        if (sections.length === 0) return;
+        
+        // Get current scroll position with offset
+        const scrollPos = window.scrollY + 100; // Offset for better detection
+        
+        // Find the current section
+        let currentSection = null;
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            
+            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                currentSection = section;
+            }
+        });
+        
+        // Clear all active states
+        navLinks.forEach(link => link.classList.remove('active'));
+        dropdownParents.forEach(dropdown => dropdown.classList.remove('active'));
+        
+        if (currentSection) {
+            const sectionId = currentSection.getAttribute('id');
+            
+            // Find and highlight the corresponding nav link
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                
+                // Handle different href formats
+                if (href === `#${sectionId}` || 
+                    href === `index.html#${sectionId}` ||
+                    href.endsWith(`#${sectionId}`)) {
+                    
+                    link.classList.add('active');
+                    
+                    // If this is a dropdown menu item, highlight the parent dropdown
+                    const dropdownParent = link.closest('.dropdown');
+                    if (dropdownParent) {
+                        const dropdownToggle = dropdownParent.querySelector('> a');
+                        if (dropdownToggle) {
+                            dropdownToggle.classList.add('active');
+                        }
+                    }
+                }
+            });
+        }
+    }
+    
     // Set active page navigation on load
     setActivePageNav();
+    
+    // Add scroll listener for navigation highlighting
+    window.addEventListener('scroll', updateActiveNavOnScroll);
+    
+    // Update on page load
+    window.addEventListener('load', updateActiveNavOnScroll);
     
     // Image lazy loading
     const lazyImages = document.querySelectorAll('img[loading="lazy"], .gallery-item img, .project-image img');
@@ -878,6 +975,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
+// Page Progress Bar
+window.addEventListener('DOMContentLoaded', function() {
+    const progressBar = document.querySelector('.progress-bar');
+    if (progressBar) {
+        window.addEventListener('scroll', function() {
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollProgress = (scrollTop / scrollHeight) * 100;
+            progressBar.style.width = scrollProgress + '%';
+        });
+    }
+});
+
 // Helper function to close TOC if it's open
 function closeTOCIfOpen() {
     const floatingTOC = document.querySelector('.floating-toc');
@@ -979,12 +1089,28 @@ function downloadCVFromModal() {
 window.onclick = function(event) {
     const resumeModal = document.getElementById('resumeModal');
     const cvModal = document.getElementById('cvModal');
+    const executiveSummaryModal = document.getElementById('executive-summary-modal');
+    const techSpecsModal = document.getElementById('tech-specs-modal');
+    const marketAnalysisModal = document.getElementById('market-analysis-modal');
+    const partnershipModal = document.getElementById('partnership-modal');
     
     if (event.target === resumeModal) {
         closeResumeModal();
     }
     if (event.target === cvModal) {
         closeCVModal();
+    }
+    if (event.target === executiveSummaryModal) {
+        closeDocumentModal('executive-summary-modal');
+    }
+    if (event.target === techSpecsModal) {
+        closeDocumentModal('tech-specs-modal');
+    }
+    if (event.target === marketAnalysisModal) {
+        closeDocumentModal('market-analysis-modal');
+    }
+    if (event.target === partnershipModal) {
+        closeDocumentModal('partnership-modal');
     }
 }
 
@@ -993,6 +1119,10 @@ document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') {
         const resumeModal = document.getElementById('resumeModal');
         const cvModal = document.getElementById('cvModal');
+        const executiveSummaryModal = document.getElementById('executive-summary-modal');
+        const techSpecsModal = document.getElementById('tech-specs-modal');
+        const marketAnalysisModal = document.getElementById('market-analysis-modal');
+        const partnershipModal = document.getElementById('partnership-modal');
         
         if (resumeModal.style.display === 'block') {
             closeResumeModal();
@@ -1000,5 +1130,59 @@ document.addEventListener('keydown', function(event) {
         if (cvModal.style.display === 'block') {
             closeCVModal();
         }
+        if (executiveSummaryModal.style.display === 'block') {
+            closeDocumentModal('executive-summary-modal');
+        }
+        if (techSpecsModal.style.display === 'block') {
+            closeDocumentModal('tech-specs-modal');
+        }
+        if (marketAnalysisModal.style.display === 'block') {
+            closeDocumentModal('market-analysis-modal');
+        }
+        if (partnershipModal.style.display === 'block') {
+            closeDocumentModal('partnership-modal');
+        }
     }
-}); 
+});
+
+// Document Modal functions for downloads
+function openDocumentModal(filename, title, modalId) {
+    // Close TOC if it's open
+    closeTOCIfOpen();
+    
+    const modal = document.getElementById(modalId);
+    const frame = document.getElementById(modalId + '-frame');
+    
+    // Set the PDF source
+    frame.src = 'documents/' + filename;
+    
+    // Show modal
+    modal.style.display = 'block';
+    
+    // Prevent body scrolling when modal is open
+    document.body.style.overflow = 'hidden';
+}
+
+function closeDocumentModal(modalId) {
+    const modal = document.getElementById(modalId);
+    const frame = document.getElementById(modalId + '-frame');
+    
+    // Hide modal
+    modal.style.display = 'none';
+    
+    // Clear iframe source to stop loading
+    frame.src = '';
+    
+    // Re-enable body scrolling
+    document.body.style.overflow = 'auto';
+}
+
+function downloadDocument(filename) {
+    // Create temporary link and trigger download
+    const link = document.createElement('a');
+    link.href = 'documents/' + filename;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+} 

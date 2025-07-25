@@ -6,6 +6,15 @@
     <title>NRTA - Next-gen Responsive Training Analytics</title>
     <meta name="description" content="Revolutionary modular fitness wearable technology. Build your perfect health monitoring device with interchangeable sensors. Disrupt the $81B wearable market.">
     <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <style>
+        /* Critical CSS to prevent FOUC */
+        html {
+            visibility: hidden;
+        }
+        html.loaded {
+            visibility: visible;
+        }
+    </style>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -23,14 +32,34 @@
                 <span class="bar"></span>
                 <span class="bar"></span>
             </button>
+            <a href="#home" class="mobile-home-icon" aria-label="Go to home">
+                <i class="fas fa-home"></i>
+            </a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#problem">Problem</a></li>
-                <li><a href="#solution">Solution</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#technology">Technology</a></li>
-                <li><a href="#market">Market</a></li>
-                <li><a href="#vision">Vision</a></li>
+                <li class="dropdown">
+                    <a href="#problem">Concept <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#problem">Problem</a></li>
+                        <li><a href="#solution">Solution</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#features">Product <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#technology">Technology</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#market">Opportunity <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#market">Market</a></li>
+                        <li><a href="#vision">Vision</a></li>
+                    </ul>
+                </li>
+                <li><a href="#about">About</a></li>
+                <!--<li><a href="support.html">Support</a></li>-->
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -41,7 +70,7 @@
     <header id="home" class="startup-hero">
         <div class="header-content">
             <div class="hero-text">
-                <div class="concept-badge">Concept Stage</div>
+                <div class="concept-badge">Concept</div>
                 <div class="hero-logo">
                     <img src="assets/icons/logo-icon.svg" alt="NRTA Logo" class="hero-logo-icon">
                     <h1>NRTA</h1>
@@ -308,15 +337,15 @@
             <h2><i class="fas fa-chart-bar"></i> Massive Market Opportunity</h2>
             <div class="quick-stats">
                 <div class="stat-item">
-                    <strong>$81.5B</strong>
+                    <strong>$81.5B<sup>[1]</sup></strong>
                     <span>Global wearable market size by 2030</span>
                 </div>
                 <div class="stat-item">
-                    <strong>18.6%</strong>
+                    <strong>18.6%<sup>[2]</sup></strong>
                     <span>Annual growth rate (CAGR)</span>
                 </div>
                 <div class="stat-item">
-                    <strong>1.4B</strong>
+                    <strong>1.4B<sup>[3]</sup></strong>
                     <span>Projected wearable users by 2030</span>
                 </div>
 
@@ -358,6 +387,10 @@
                     </div>
                 </div>
 
+            </div>
+            
+            <div class="references-note">
+                <p><i class="fas fa-info-circle"></i> <strong>References:</strong> [1] Grand View Research, 2024 | [2] Statista, 2024 | [3] IDC, 2024. <a href="citations.html">View full citations</a></p>
             </div>
         </section>
 
@@ -440,6 +473,61 @@
             </div>
         </section>
 
+        <!-- About Us Section -->
+        <section id="about" class="content-section">
+            <h2><i class="fas fa-users"></i> About NRTA</h2>
+            <div class="startup-card">
+                <div class="project-header">
+                    <h3>Our Mission & Story</h3>
+                </div>
+                <div class="project-details">
+                    <h4><i class="fas fa-bullseye"></i> Our Mission</h4>
+                    <p>NRTA (Next-gen Responsive Training Analytics) was born from a simple observation: a fitness wearable should be able to provide more than just monitoring and reporting, it should provide more such as workout analysis and recommendations.</p>
+                    
+                    <h4><i class="fas fa-lightbulb"></i> The Innovation</h4>
+                    <p>We're developing the world's first truly modular fitness wearable system. Instead of forcing users into rigid, one-size-fits-all solutions, NRTA allows you to build your perfect health monitoring device by selecting and combining specialized sensor modules.</p>
+                    
+                    <h4><i class="fas fa-heart"></i> Our Values</h4>
+                    <ul>
+                        <li><strong>Personalization:</strong> Every user's fitness journey is unique - their device should be too</li>
+                        <li><strong>Sustainability:</strong> Modular design dramatically reduces e-waste and promotes responsible consumption</li>
+                        <li><strong>Innovation:</strong> Pushing the boundaries of what's possible in wearable technology</li>
+                        <li><strong>Accessibility:</strong> Making advanced health monitoring available to everyone</li>
+                        <li><strong>Future-Proof:</strong> Building technology that evolves with your needs</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <div class="overview-collapsible-header">
+                        <h3><i class="fas fa-rocket"></i> The Team</h3>
+                        <button class="overview-collapse-btn" aria-label="Toggle content">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="overview-content">
+                        <p>
+                            NRTA is currently in the concept development phase, bringing together expertise in wearable technology, modular design, and health analytics.
+                        </p>
+                    </div>
+                </div>
+                <div class="overview-card">
+                    <div class="overview-collapsible-header">
+                        <h3><i class="fas fa-handshake"></i> Partnership Approach</h3>
+                        <button class="overview-collapse-btn" aria-label="Toggle content">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="overview-content">
+                        <p>
+                            We are looking for potential partners who would be interesting in this technology to work together to make this a reality.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Contact Section -->
         <section id="contact" class="content-section">
             <h2><i class="fas fa-rocket"></i> Join the NRTA Revolution</h2>
@@ -455,6 +543,17 @@
                                 <div class="main-info">
                                     <strong>All Contacts</strong>
                                     <span>contact@not-yet-a-thing-email.com</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <i class="fas fa-cloud"></i>
+                            <div>
+                                <div class="main-info">
+                                    <strong>Bluesky</strong>
+                                    <span>@nrta.bsky.social.not-yet</span>
                                 </div>
                             </div>
                         </div>
@@ -488,6 +587,48 @@
                 </div>
             </div>
         </section>
+
+        <!-- Downloads Section -->
+        <!--
+        <section id="downloads" class="content-section">
+            <h2><i class="fas fa-download"></i> Downloads & Resources</h2>
+            <div class="startup-card">
+                <div class="project-header">
+                    <h3>Access NRTA Concept Materials</h3>
+                </div>
+                <div class="project-details">
+                    <p>Download technical specifications, concept materials, and public documentation for the NRTA modular fitness wearable system.</p>
+                    
+                    <div class="download-grid">
+                        <div class="download-card">
+                            <i class="fas fa-file-pdf"></i>
+                            <h4>Executive Summary</h4>
+                            <p>Comprehensive overview of the NRTA concept and business model</p>
+                            <a href="downloads.html" class="download-link">View Details</a>
+                        </div>
+                        <div class="download-card">
+                            <i class="fas fa-microchip"></i>
+                            <h4>Technical Specs</h4>
+                            <p>Detailed technical specifications for the modular platform</p>
+                            <a href="downloads.html" class="download-link">View Details</a>
+                        </div>
+                        <div class="download-card">
+                            <i class="fas fa-chart-line"></i>
+                            <h4>Market Analysis</h4>
+                            <p>Market opportunity and competitive landscape</p>
+                            <a href="downloads.html" class="download-link">View Details</a>
+                        </div>
+                    </div>
+                    
+                    <div class="full-downloads-link">
+                        <a href="downloads.html" class="btn primary">
+                            <i class="fas fa-download"></i> View All Downloads (Coming Soon)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    -->
     </main>
 
     <!-- Footer -->
@@ -506,9 +647,10 @@
                         <h4>Join the Revolution</h4>
                         <p>Ready to disrupt the wearable market?</p>
                         <div class="social-links">
-                            <a href="blank" aria-label="Contact Us">
+                            <a href="mailto:support@nrta.com" class="animated-contact-btn">
                                 <i class="fas fa-envelope"></i>
-                                <span>Contact Us</span>
+                                <span class="btn-text">Email Us</span>
+                                <span class="btn-pulse"></span>
                             </a>
                         </div>
                     </div>
@@ -556,7 +698,100 @@
         </div>
     </div>-->
 
+    <!-- Document Modals -->
+    <div id="executive-summary-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>NRTA Executive Summary</h3>
+                <button class="modal-close" onclick="closeDocumentModal('executive-summary-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <iframe id="executive-summary-modal-frame" src="" width="100%" height="600px"></iframe>
+            </div>
+            <div class="modal-footer">
+                <!--
+                <button class="download-btn" onclick="downloadDocument('NRTA_Executive_Summary.pdf')">
+                    <i class="fas fa-download"></i> Download PDF
+                </button>
+                -->
+            </div>
+        </div>
+    </div>
+
+    <div id="tech-specs-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>NRTA Technical Specifications</h3>
+                <button class="modal-close" onclick="closeDocumentModal('tech-specs-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <iframe id="tech-specs-modal-frame" src="" width="100%" height="600px"></iframe>
+            </div>
+            <div class="modal-footer">
+                <!--
+                <button class="download-btn" onclick="downloadDocument('NRTA_Technical_Specs.pdf')">
+                    <i class="fas fa-download"></i> Download PDF
+                </button>
+                -->
+            </div>
+        </div>
+    </div>
+
+    <div id="market-analysis-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>NRTA Market Analysis</h3>
+                <button class="modal-close" onclick="closeDocumentModal('market-analysis-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <iframe id="market-analysis-modal-frame" src="" width="100%" height="600px"></iframe>
+            </div>
+            <div class="modal-footer">
+                <!--
+                <button class="download-btn" onclick="downloadDocument('NRTA_Market_Analysis.pdf')">
+                    <i class="fas fa-download"></i> Download PDF
+                </button>
+                -->
+            </div>
+        </div>
+    </div>
+
+    <div id="partnership-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>NRTA Partnership Proposal</h3>
+                <button class="modal-close" onclick="closeDocumentModal('partnership-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <iframe id="partnership-modal-frame" src="" width="100%" height="600px"></iframe>
+            </div>
+            <div class="modal-footer">
+                <!--
+                <button class="download-btn" onclick="downloadDocument('NRTA_Partnership_Proposal.pdf')">
+                    <i class="fas fa-download"></i> Download PDF
+                </button>
+                -->
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
     <!-- <script src="toc.js"></script> -->
+    <script>
+        // Prevent FOUC - show content when page is ready
+        function showContent() {
+            document.documentElement.classList.add('loaded');
+        }
+        
+        // Try multiple approaches to ensure content shows
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', showContent);
+        } else {
+            showContent();
+        }
+        
+        // Also show content when window loads (after all resources)
+        window.addEventListener('load', showContent);
+    </script>
 </body>
 </html>
