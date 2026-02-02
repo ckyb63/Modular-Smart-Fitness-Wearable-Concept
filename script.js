@@ -153,27 +153,46 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 250);
     });
     
-    // Add scrolled class to body when page is scrolled
+    // Nav auto-hide (hide on scroll down, show on scroll up) and back-to-top (show only when scrolling down)
+    let lastScrollY = window.scrollY;
+    const scrollThreshold = 80;
+    const backToTopThreshold = 300;
+
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 20) {
+        const scrollY = window.scrollY;
+
+        if (scrollY > 20) {
             body.classList.add('scrolled');
         } else {
             body.classList.remove('scrolled');
         }
-        
-        // Show/hide back to top button
+
+        const nav = document.querySelector('nav');
+        if (nav) {
+            if (body.classList.contains('menu-open') || scrollY <= scrollThreshold) {
+                nav.classList.remove('nav-hidden');
+            } else if (scrollY > lastScrollY) {
+                nav.classList.add('nav-hidden');
+            } else {
+                nav.classList.remove('nav-hidden');
+            }
+        }
+
         const backToTop = document.querySelector('.back-to-top');
         if (backToTop) {
-            if (window.scrollY > 300) {
+            if (scrollY <= backToTopThreshold) {
+                backToTop.classList.remove('visible');
+            } else if (scrollY > lastScrollY) {
                 backToTop.classList.add('visible');
             } else {
                 backToTop.classList.remove('visible');
             }
         }
-        
-        // Update progress bar
+
+        lastScrollY = scrollY;
+
         updateProgressBar();
-    });
+    }, { passive: true });
     
     // Active section highlighting in navigation (only for single-page sections)
     const sections = document.querySelectorAll('.content-section');
@@ -560,7 +579,18 @@ document.addEventListener('DOMContentLoaded', function() {
             modal.style.opacity = '1';
         }, 10);
     }
-    
+
+    // Gallery page: open image modal when clicking gallery items
+    document.querySelectorAll('.gallery-item-trigger').forEach(function(trigger) {
+        trigger.addEventListener('click', function(e) {
+            e.preventDefault();
+            var src = this.getAttribute('data-src') || this.dataset.src;
+            var alt = this.getAttribute('data-alt') || this.dataset.alt || 'Gallery image';
+            var desc = this.getAttribute('data-description') || this.dataset.description || '';
+            if (src) openImageModal(src, alt, desc || null);
+        });
+    });
+
     // Progress bar functionality
     function updateProgressBar() {
         const progressBar = document.getElementById('progress-bar');
@@ -588,29 +618,62 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Add animation on scroll for content sections
+    // Advanced scroll-triggered animations with Intersection Observer
     const observerOptions = {
         threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        rootMargin: '0px 0px -100px 0px'
     };
     
-    const sectionObserver = new IntersectionObserver((entries) => {
+    const animationObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.classList.add('animate-in');
+                // Stop observing once animated
+                animationObserver.unobserve(entry.target);
             }
         });
     }, observerOptions);
     
-    // Observe content sections for animation
+    // Observe all animatable elements
+    const animatableElements = document.querySelectorAll(
+        '.overview-card, .module-card, .advantage-item, .testimonial-card, .faq-item, .stat-item.animated-stat, .startup-card.modern-card'
+    );
+    
+    animatableElements.forEach((element, index) => {
+        // Add staggered delay based on index
+        element.style.animationDelay = `${(index % 5) * 0.1}s`;
+        animationObserver.observe(element);
+    });
+    
+    // Observe content sections for scroll-triggered animation
     const contentSections = document.querySelectorAll('.content-section');
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+                sectionObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' });
+    
     contentSections.forEach(section => {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(30px)';
-        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         sectionObserver.observe(section);
     });
+    
+    // Subtle parallax effect for hero section (disabled to prevent overlap issues)
+    // Parallax can be re-enabled if needed, but keeping it disabled for better UX
+    // let lastScroll = 0;
+    // window.addEventListener('scroll', () => {
+    //     const currentScroll = window.pageYOffset;
+    //     const hero = document.querySelector('.startup-hero');
+    //     
+    //     if (hero && currentScroll < hero.offsetHeight) {
+    //         const parallaxSpeed = 0.3;
+    //         hero.style.transform = `translateY(${currentScroll * parallaxSpeed}px)`;
+    //     }
+    //     
+    //     lastScroll = currentScroll;
+    // }, { passive: true });
 
     // Collapsible experience cards functionality
     const timelineContents = document.querySelectorAll('.timeline-content');
@@ -972,6 +1035,102 @@ document.addEventListener('DOMContentLoaded', function() {
         resizeCollapseTimer = setTimeout(initializeCollapseStates, 100);
     });
 
+    // FAQ Accordion Functionality
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        if (question) {
+            question.addEventListener('click', function() {
+                const isActive = item.classList.contains('active');
+                
+                // Close all other FAQ items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                if (isActive) {
+                    item.classList.remove('active');
+                } else {
+                    item.classList.add('active');
+                }
+            });
+        }
+    });
+
+    // Animated Stats Counter
+    function animateStats() {
+        const stats = document.querySelectorAll('.stat-number');
+        let hasAnimated = false;
+        
+        stats.forEach(stat => {
+            if (stat.hasAttribute('data-animated')) return;
+            stat.setAttribute('data-animated', 'true');
+            
+            const target = parseFloat(stat.getAttribute('data-target'));
+            const suffix = stat.getAttribute('data-suffix') || '';
+            const prefix = stat.textContent.includes('$') ? '$' : '';
+            const duration = 2000; // 2 seconds
+            const steps = 60;
+            const increment = target / steps;
+            let current = 0;
+            let stepCount = 0;
+            
+            const timer = setInterval(() => {
+                stepCount++;
+                current += increment;
+                
+                if (stepCount >= steps) {
+                    stat.textContent = prefix + target + suffix;
+                    clearInterval(timer);
+                } else {
+                    const displayValue = current.toFixed(suffix === '%' ? 1 : 1);
+                    stat.textContent = prefix + displayValue + suffix;
+                }
+            }, duration / steps);
+        });
+    }
+
+    // Intersection Observer for animated stats
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const statItems = entry.target.querySelectorAll('.animated-stat');
+                if (statItems.length > 0) {
+                    animateStats();
+                    statsObserver.unobserve(entry.target);
+                }
+            }
+        });
+    }, { threshold: 0.5 });
+
+    const marketSection = document.querySelector('#market');
+    if (marketSection) {
+        statsObserver.observe(marketSection);
+    }
+
+    // Smooth scroll for hero scroll indicator
+    const scrollIndicator = document.querySelector('.hero-scroll-indicator');
+    if (scrollIndicator) {
+        scrollIndicator.addEventListener('click', function() {
+            const firstSection = document.querySelector('.content-section');
+            if (firstSection) {
+                firstSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
+
+    // Demo video button placeholder
+    const playDemoBtn = document.querySelector('.play-demo-btn');
+    if (playDemoBtn) {
+        playDemoBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Demo video will be available soon! For now, this is a placeholder for your presentation.');
+            // You can replace this with actual video modal functionality
+        });
+    }
 
 });
 

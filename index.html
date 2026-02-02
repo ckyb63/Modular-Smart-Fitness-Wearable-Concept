@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NRTA - Next-gen Responsive Training Analytics</title>
-    <meta name="description" content="Revolutionary modular fitness wearable technology. Build your perfect health monitoring device with interchangeable sensors. Disrupt the $81B wearable market.">
+    <meta name="description" content="NRTA – workout aid that scans muscular data per exercise and gives form feedback. Modular interface as a licensable standard for smart prosthetics and wearables. Early-stage concept.">
     <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
     <style>
         /* Critical CSS to prevent FOUC */
@@ -37,29 +37,10 @@
             </a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li class="dropdown">
-                    <a href="#problem">Concept <i class="fas fa-chevron-down"></i></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#problem">Problem</a></li>
-                        <li><a href="#solution">Solution</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#features">Product <i class="fas fa-chevron-down"></i></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#technology">Technology</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#market">Opportunity <i class="fas fa-chevron-down"></i></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#market">Market</a></li>
-                        <li><a href="#vision">Vision</a></li>
-                    </ul>
-                </li>
+                <li><a href="#problem">Concept</a></li>
+                <li><a href="#solution">Product</a></li>
+                <li><a href="#market">Market</a></li>
                 <li><a href="#about">About</a></li>
-                <!--<li><a href="support.html">Support</a></li>-->
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -70,518 +51,176 @@
     <header id="home" class="startup-hero">
         <div class="header-content">
             <div class="hero-text">
-                <div class="concept-badge">Concept</div>
+                <div class="concept-badge">
+                    <i class="fas fa-sparkles"></i>
+                    Early-Stage Concept
+                </div>
                 <div class="hero-logo">
                     <img src="assets/icons/logo-icon.svg" alt="NRTA Logo" class="hero-logo-icon">
                     <h1>NRTA</h1>
                 </div>
-                <p class="subtitle">Next-gen Responsive Training Analytics</p>
-                <p class="subtitle">The Modular Fitness Wearable</p>
+                <p class="hero-tagline">Next-gen Responsive Training Analytics</p>
+                <p class="hero-description">Workout aid: muscular data per exercise + form feedback. Modular interface as a licensable standard—like HDMI for smart prosthetics.</p>
             </div>
-            <div class="contact-links">
-                <a href="#solution" class="contact-link">
-                    <i class="fas fa-rocket"></i>
-                    Explore Innovation
-                </a>
-                <a href="#contact" class="contact-link">
-                    <i class="fas fa-handshake"></i>
-                    Partner With Us
-                </a>
-                <a href="#features" class="contact-link">
-                    <i class="fas fa-puzzle-piece"></i>
-                    Module Concepts
-                </a>
+            <div class="hero-cta-section">
+                <div class="hero-cta-primary">
+                    <a href="#solution" class="cta-button cta-primary">
+                        <i class="fas fa-rocket"></i>
+                        <span>See How It Works</span>
+                    </a>
+                    <a href="#contact" class="cta-button cta-secondary">
+                        <i class="fas fa-handshake"></i>
+                        <span>Partner With Us</span>
+                    </a>
+                </div>
             </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
         </div>
     </header>
 
     <!-- Main Content -->
     <main>
-        <!-- Problem Section -->
-        <section id="problem" class="content-section">
-            <h2><i class="fas fa-exclamation-triangle"></i> The Problem</h2>
-            <div class="overview-grid">
-                <div class="overview-card">
-                    <div class="overview-collapsible-header">
-                        <h3><i class="fas fa-users"></i> One Size Doesn't Fit All</h3>
-                        <button class="overview-collapse-btn" aria-label="Toggle content">
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
-                    <div class="overview-content">
-                        <p>Current fitness wearables force users into rigid tracking systems that don't adapt to individual needs, preferences, or fitness goals.</p>
-                    </div>
-                </div>
-                <div class="overview-card">
-                    <div class="overview-collapsible-header">
-                        <h3><i class="fas fa-battery-empty"></i> Limited Functionality</h3>
-                        <button class="overview-collapse-btn" aria-label="Toggle content">
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
-                    <div class="overview-content">
-                        <p>Most devices offer basic tracking with limited customization, leaving users wanting more specific health metrics and features.</p>
-                    </div>
-                </div>
-                <div class="overview-card">
-                    <div class="overview-collapsible-header">
-                        <h3><i class="fas fa-chart-line"></i> Data Overload</h3>
-                        <button class="overview-collapse-btn" aria-label="Toggle content">
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
-                    <div class="overview-content">
-                        <p>Users receive overwhelming amounts of data without meaningful insights or actionable recommendations for their fitness journey.</p>
-                    </div>
-                </div>
-                <div class="overview-card">
-                    <div class="overview-collapsible-header">
-                        <h3><i class="fas fa-dollar-sign"></i> High Cost of Replacement</h3>
-                        <button class="overview-collapse-btn" aria-label="Toggle content">
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
-                    <div class="overview-content">
-                        <p>When technology advances or user needs change, entire devices become obsolete, forcing expensive upgrades.</p>
-                    </div>
+        <!-- Problem + Solution (Concept) -->
+        <section id="problem" class="content-section problem-section">
+            <div class="section-header-modern">
+                <h2><i class="fas fa-exclamation-triangle"></i> The Problem</h2>
+                <p class="section-subtitle">Fitness wearables don't tell you which muscles you're actually using—or how to fix your form. The hard problem isn't IMU or basic sensors; it's muscle sensing and turning that into useful feedback.</p>
+            </div>
+            <div class="problem-showcase">
+                <div class="problem-main-card">
+                    <div class="problem-icon-large"><i class="fas fa-question-circle"></i></div>
+                    <h3>Why this, why now?</h3>
+                    <p>We want a workout aid that scans muscular data per exercise and shows more/less involvement by muscle group—then the app tells you how to improve form. No mainstream device does that well. We're also betting on a modular interface: one standard others can build on (smart prosthetics, other wearables). Hardware moat, licensing revenue.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Solution Section -->
+        <!-- Solution Section (Product) -->
         <section id="solution" class="content-section">
-            <h2><i class="fas fa-lightbulb"></i> The NRTA Innovation</h2>
-            <div class="startup-card">
+            <div class="section-header-modern">
+                <h2><i class="fas fa-lightbulb"></i> The NRTA Concept</h2>
+                <p class="section-subtitle">Workout aid first: muscular data per exercise, form feedback. Then the modular interface as a licensable standard—like HDMI/DisplayPort for smart prosthetics.</p>
+            </div>
+            <div class="startup-card modern-card">
                 <div class="project-header">
-                    <h3>Revolutionizing Fitness Wearables</h3>
-                    <!--<span class="project-type featured">New Concept Technology</span>-->
+                    <h3>How It Works</h3>
+                    <span class="project-type featured">Concept in Development</span>
                 </div>
                 <div class="project-details">
-                    <h4><i class="fas fa-puzzle-piece"></i> The Modular Revolution</h4>
-                    <p>NRTA is a new concept in fitness wearables. It is a modular system that allows you to build your perfect fitness companion by selecting and combining specialized sensor modules.</p>
-                    
-                    <h4><i class="fas fa-cogs"></i> Core Advantages</h4>
-                    <ul>
-                        <li><strong>Build Your Device:</strong> Choose only the sensors you need for your specific fitness goals</li>
-                        <li><strong>Evolve Over Time:</strong> Add new modules as your fitness journey progresses</li>
-                        <li><strong>Future-Proof Investment:</strong> Never buy a whole new device again - just upgrade modules</li>
-                        <li><strong>Sustainable Choice:</strong> Dramatically reduce e-waste through modular design</li>
-                        <li><strong>Cost Efficiency:</strong> Pay only for the features you actually use</li>
-                    </ul>
+                    <p><strong>Product (workout aid):</strong> Scan muscular data per exercise and show which muscle groups are more or less involved. The app uses that to tell you how to improve your form. MCU + IMU is doable; the hard problem we're tackling is muscle sensing.</p>
+                    <p><strong>Platform (interface standard):</strong> The modular connector and protocol are designed so others can adopt them—smart prosthetics, other wearables. We make money on licensing. A hardware moat is always better.</p>
                 </div>
             </div>
-            
             <div class="modular-grid">
                 <div class="module-card">
                     <div class="module-icon">
-                        <i class="fas fa-heartbeat"></i>
+                        <i class="fas fa-dumbbell"></i>
                     </div>
-                    <h4>Core Health Module</h4>
-                    <p>Essential vitals tracking including heart rate, steps, and basic activity monitoring.</p>
+                    <h4>Muscle & Exercise Sensing</h4>
+                    <p>Per-exercise scanning of muscular involvement. The hard problem: reliable muscle sensing (IMU/MCU is the easier part; we're exploring sensing + optional CV tradeoffs for cost).</p>
                 </div>
                 <div class="module-card">
                     <div class="module-icon">
-                        <i class="fas fa-running"></i>
+                        <i class="fas fa-chart-line"></i>
                     </div>
-                    <h4>Performance Module</h4>
-                    <p>Advanced metrics for serious athletes including VO2 max, training load, muscle activation, and recovery analysis.</p>
+                    <h4>Form & Feedback</h4>
+                    <p>App interprets which muscle groups are more/less involved and tells the user how to improve form and target the right muscles for each exercise.</p>
                 </div>
                 <div class="module-card">
                     <div class="module-icon">
-                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-plug"></i>
                     </div>
-                    <h4>Sleep & Recovery Module</h4>
-                    <p>Comprehensive sleep tracking with REM analysis, sleep quality scoring, and recovery recommendations.</p>
-                </div>
-                <div class="module-card">
-                    <div class="module-icon">
-                        <i class="fas fa-thermometer-half"></i>
-                    </div>
-                    <h4>Environmental Module</h4>
-                    <p>Track external factors like temperature, humidity, UV exposure, and air quality.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Features Section -->
-        <section id="features" class="content-section">
-            <h2><i class="fas fa-star"></i> Key Features</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <div class="overview-collapsible-header">
-                        <h3><i class="fas fa-heartbeat"></i> Health Monitoring</h3>
-                        <button class="overview-collapse-btn" aria-label="Toggle content">
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
-                    <div class="overview-content">
-                        <div class="skill-tags">
-                            <span class="skill-tag primary">Heart Rate Variability</span>
-                            <span class="skill-tag">Blood Oxygen Levels</span>
-                            <span class="skill-tag">Sleep Quality Analysis</span>
-                            <span class="skill-tag">Stress Level Tracking</span>
-                            <span class="skill-tag">Recovery Metrics</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <div class="overview-collapsible-header">
-                        <h3><i class="fas fa-running"></i> Activity Tracking</h3>
-                        <button class="overview-collapse-btn" aria-label="Toggle content">
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
-                    <div class="overview-content">
-                        <div class="skill-tags">
-                            <span class="skill-tag primary">Muscle Activation</span>
-                            <span class="skill-tag">Multi-Sport Recognition</span>
-                            <span class="skill-tag">GPS Precision Tracking</span>
-                            <span class="skill-tag">Workout Form Analysis</span>
-                            <span class="skill-tag">Performance Optimization</span>
-                            <span class="skill-tag">Goal Setting & Progress</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <div class="overview-collapsible-header">
-                        <h3><i class="fas fa-puzzle-piece"></i> Modular System</h3>
-                        <button class="overview-collapse-btn" aria-label="Toggle content">
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
-                    <div class="overview-content">
-                        <div class="skill-tags">
-                            <span class="skill-tag primary">Interchangeable Sensors</span>
-                            <span class="skill-tag">Easy Module Installation</span>
-                            <span class="skill-tag">Future-Proof Design</span>
-                            <span class="skill-tag">Custom Configurations</span>
-                            <span class="skill-tag">Expandable Ecosystem</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <div class="overview-collapsible-header">
-                        <h3><i class="fas fa-brain"></i> Smart Intelligence</h3>
-                        <button class="overview-collapse-btn" aria-label="Toggle content">
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
-                    <div class="overview-content">
-                        <div class="skill-tags">
-                            <span class="skill-tag primary">AI-Powered Insights</span>
-                            <span class="skill-tag">Personalized Recommendations</span>
-                            <span class="skill-tag">Predictive Analytics</span>
-                            <span class="skill-tag">Adaptive Learning</span>
-                            <span class="skill-tag">Health Trend Analysis</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Technology Section -->
-        <section id="technology" class="content-section">
-            <h2><i class="fas fa-microchip"></i> Technology Stack</h2>
-            <div class="development-grid">
-                <div class="development-card">
-                    <div class="overview-collapsible-header">
-                        <h3><i class="fas fa-mobile-alt"></i> Hardware Innovation</h3>
-                        <button class="overview-collapse-btn" aria-label="Toggle content">
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
-                    <div class="overview-content">
-                        <ul>
-                            <li>Magnetic connector system for seamless module attachment</li>
-                            <li>Advanced sensor fusion technology</li>
-                            <li>Low-power consumption design</li>
-                            <li>Water-resistant modular interfaces</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="development-card">
-                    <div class="overview-collapsible-header">
-                        <h3><i class="fas fa-cloud"></i> Software Platform</h3>
-                        <button class="overview-collapse-btn" aria-label="Toggle content">
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
-                    <div class="overview-content">
-                        <ul>
-                            <li>Real-time data processing and analysis</li>
-                            <li>On-device machine learning algorithms</li>
-                            <li>Cross-platform mobile applications</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="development-card">
-                    <div class="overview-collapsible-header">
-                        <h3><i class="fas fa-shield-alt"></i> Security & Privacy</h3>
-                        <button class="overview-collapse-btn" aria-label="Toggle content">
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
-                    <div class="overview-content">
-                        <ul>
-                            <li>End-to-end encryption for all data</li>
-                            <li>Local data processing capabilities</li>
-                            <li>User-controlled data sharing</li>
-                        </ul>
-                    </div>
+                    <h4>Modular Interface (Standard)</h4>
+                    <p>The connector and protocol as a licensable standard—"HDMI for smart prosthetics." Others build devices that plug into the same interface; we license the standard.</p>
                 </div>
             </div>
         </section>
 
         <!-- Market Section -->
         <section id="market" class="content-section">
-            <h2><i class="fas fa-chart-bar"></i> Massive Market Opportunity</h2>
-            <div class="quick-stats">
-                <div class="stat-item">
-                    <strong>$81.5B<sup>[1]</sup></strong>
-                    <span>Global wearable market size by 2030</span>
-                </div>
-                <div class="stat-item">
-                    <strong>18.6%<sup>[2]</sup></strong>
-                    <span>Annual growth rate (CAGR)</span>
-                </div>
-                <div class="stat-item">
-                    <strong>1.4B<sup>[3]</sup></strong>
-                    <span>Projected wearable users by 2030</span>
-                </div>
-
+            <div class="section-header-modern">
+                <h2><i class="fas fa-chart-bar"></i> Market Context</h2>
+                <p class="section-subtitle">Workout aid first; interface standard and licensing next</p>
             </div>
-            
             <div class="startup-card">
-                <div class="education-header">
-                    <h3>The Untapped Opportunity</h3>
-                    <span class="location">Why Now?</span>
-                </div>
-                <div class="degree">
-                    <p><strong>The Problem:</strong> Current wearables offer rigid, one-size-fits-all solutions that don't adapt to individual needs or preferences</p>
-                    <p><strong>The Gap:</strong> No existing device allows true customization - users must accept everything or nothing</p>
-                    <p><strong>The Solution:</strong> NRTA's modular approach addresses this unmet market demand</p>
-                </div>
-            </div>
-            
-            <div class="overview-grid">
-                <div class="overview-card">
-                    <div class="overview-collapsible-header">
-                        <h3><i class="fas fa-users"></i> Primary Market</h3>
-                        <button class="overview-collapse-btn" aria-label="Toggle content">
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
-                    <div class="overview-content">
-                        <p><strong>Fitness Enthusiasts (25-45):</strong> Users globally seeking advanced, personalized health tracking with modular flexibility</p>
-                    </div>
-                </div>
-                <div class="overview-card">
-                    <div class="overview-collapsible-header">
-                        <h3><i class="fas fa-hospital"></i> Healthcare B2B</h3>
-                        <button class="overview-collapse-btn" aria-label="Toggle content">
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
-                    <div class="overview-content">
-                        <p><strong>Healthcare Providers:</strong> Hospitals and clinics need customizable patient monitoring solutions</p>
-                    </div>
-                </div>
-
-            </div>
-            
-            <div class="references-note">
-                <p><i class="fas fa-info-circle"></i> <strong>References:</strong> [1] Grand View Research, 2024 | [2] Statista, 2024 | [3] IDC, 2024. <a href="citations.html">View full citations</a></p>
-            </div>
-        </section>
-
-        <!-- Vision Section -->
-        <section id="vision" class="content-section">
-            <h2><i class="fas fa-eye"></i> Vision & Future</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="collapsible-header" role="button" tabindex="0" aria-label="Toggle Phase 1 details">
-                            <div class="job-header">
-                                <h3>Phase 1: Foundation</h3>
-                                <span class="job-period current-phase">Current Concept Phase</span>
-                            </div>
-                            <div class="collapse-btn">
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                        </div>
-                        <div class="job-details">
-                            <div class="job-subtitle">Core Product Development</div>
-                            <ul class="job-responsibilities">
-                                <li>Develop basic modular hardware platform</li>
-                                <li>Create essential sensor modules (heart rate, GPS, accelerometer)</li>
-                                <li>Build foundational mobile application</li>
-                                <li>Establish manufacturing partnerships</li>
-                                <li>Conduct user testing and feedback integration</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="collapsible-header" role="button" tabindex="0" aria-label="Toggle Phase 2 details">
-                            <div class="job-header">
-                                <h3>Phase 2: Expansion</h3>
-                                <span class="job-period">Future Phase</span>
-                            </div>
-                            <div class="collapse-btn">
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                        </div>
-                        <div class="job-details">
-                            <div class="job-subtitle">Advanced Features & Market Entry</div>
-                            <ul class="job-responsibilities">
-                                <li>Launch advanced sensor modules (blood oxygen, ECG, temperature)</li>
-                                <li>Implement AI-powered health insights</li>
-                                <li>Establish retail partnerships</li>
-                                <li>Develop healthcare provider integrations</li>
-                                <li>Scale manufacturing and distribution</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="collapsible-header" role="button" tabindex="0" aria-label="Toggle Phase 3 details">
-                            <div class="job-header">
-                                <h3>Phase 3: Innovation</h3>
-                                <span class="job-period">Future Phase</span>
-                            </div>
-                            <div class="collapse-btn">
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                        </div>
-                        <div class="job-details">
-                            <div class="job-subtitle">Next-Generation Technology</div>
-                            <ul class="job-responsibilities">
-                                <li>Introduce specialized modules (hydration, UV exposure, air quality)</li>
-                                <li>Launch developer platform for third-party modules</li>
-                                <li>Implement predictive health analytics</li>
-                                <li>Expand into B2B healthcare solutions</li>
-                                <li>Explore international market expansion</li>
-                            </ul>
-                        </div>
-                    </div>
+                <div class="project-details">
+                    <p><strong>First use case:</strong> Fitness enthusiasts who want real muscular feedback per exercise and form guidance—no mainstream wearable does that well today.</p>
+                    <p><strong>Bigger play:</strong> Position the modular interface as the standard for smart prosthetics and other body-worn devices. We make money on licensing the interface, not just selling one product. Hardware moat, recurring revenue from partners who adopt the standard.</p>
                 </div>
             </div>
         </section>
 
         <!-- About Us Section -->
         <section id="about" class="content-section">
-            <h2><i class="fas fa-users"></i> About NRTA</h2>
-            <div class="startup-card">
-                <div class="project-header">
-                    <h3>Our Mission & Story</h3>
-                </div>
-                <div class="project-details">
-                    <h4><i class="fas fa-bullseye"></i> Our Mission</h4>
-                    <p>NRTA (Next-gen Responsive Training Analytics) was born from a simple observation: a fitness wearable should be able to provide more than just monitoring and reporting, it should provide more such as workout analysis and recommendations.</p>
-                    
-                    <h4><i class="fas fa-lightbulb"></i> The Innovation</h4>
-                    <p>We're developing the world's first truly modular fitness wearable system. Instead of forcing users into rigid, one-size-fits-all solutions, NRTA allows you to build your perfect health monitoring device by selecting and combining specialized sensor modules.</p>
-                    
-                    <h4><i class="fas fa-heart"></i> Our Values</h4>
-                    <ul>
-                        <li><strong>Personalization:</strong> Every user's fitness journey is unique - their device should be too</li>
-                        <li><strong>Sustainability:</strong> Modular design dramatically reduces e-waste and promotes responsible consumption</li>
-                        <li><strong>Innovation:</strong> Pushing the boundaries of what's possible in wearable technology</li>
-                        <li><strong>Accessibility:</strong> Making advanced health monitoring available to everyone</li>
-                        <li><strong>Future-Proof:</strong> Building technology that evolves with your needs</li>
-                    </ul>
-                </div>
+            <div class="section-header-modern">
+                <h2><i class="fas fa-users"></i> About NRTA</h2>
+                <p class="section-subtitle">Who we are and what we're looking for</p>
             </div>
-            
-            <div class="overview-grid">
-                <div class="overview-card">
-                    <div class="overview-collapsible-header">
-                        <h3><i class="fas fa-rocket"></i> The Team</h3>
-                        <button class="overview-collapse-btn" aria-label="Toggle content">
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
-                    <div class="overview-content">
-                        <p>
-                            NRTA is currently in the concept development phase, bringing together expertise in wearable technology, modular design, and health analytics.
-                        </p>
-                    </div>
-                </div>
-                <div class="overview-card">
-                    <div class="overview-collapsible-header">
-                        <h3><i class="fas fa-handshake"></i> Partnership Approach</h3>
-                        <button class="overview-collapse-btn" aria-label="Toggle content">
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
-                    <div class="overview-content">
-                        <p>
-                            We are looking for potential partners who would be interesting in this technology to work together to make this a reality.
-                        </p>
-                    </div>
+            <div class="startup-card">
+                <div class="project-details">
+                    <p><strong>NRTA</strong> (Next-gen Responsive Training Analytics) started as a workout aid concept: scan muscular data per exercise, show which muscle groups are more/less involved, and use the app to tell users how to improve their form. We're also designing the modular interface so it can become a licensable standard—like HDMI/DisplayPort for smart prosthetics—with revenue from licensing, not just device sales.</p>
+                    <p>We're in concept phase—no product yet. We're looking for early partners: hardware (muscle sensing, IMU, connectors), investors, or advisors in wearables/prosthetics who want to help shape and build this with us.</p>
                 </div>
             </div>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="content-section">
-            <h2><i class="fas fa-rocket"></i> Join the NRTA Revolution</h2>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3>Ready to Disrupt the Wearable Market?</h3>
-                    <p>NRTA is seeking strategic partners, investors, and industry leaders who want to be part of the next generation of fitness technology. This is your opportunity to invest in the future of personalized health monitoring.</p>
-                    
-                    <div class="contact-methods">
-                        <div class="contact-method">
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <div class="main-info">
-                                    <strong>All Contacts</strong>
-                                    <span>contact@not-yet-a-thing-email.com</span>
-                                </div>
+        <section id="contact" class="content-section contact-section-redesigned">
+            <div class="section-header-modern">
+                <h2><i class="fas fa-envelope"></i> Get in Touch</h2>
+                <p class="section-subtitle">Interested? Reach out for partnerships, investment, or collaboration.</p>
+            </div>
+            
+            <!-- Contact Information Grid -->
+            <div class="contact-info-redesigned">
+                <div class="contact-methods-grid">
+                    <div class="contact-method-card">
+                        <div class="contact-method-header">
+                            <div class="contact-method-icon">
+                                <i class="fas fa-envelope"></i>
                             </div>
+                            <h4>Email</h4>
                         </div>
-                    </div>
-                    <div class="contact-methods">
-                        <div class="contact-method">
-                            <i class="fas fa-cloud"></i>
-                            <div>
-                                <div class="main-info">
-                                    <strong>Bluesky</strong>
-                                    <span>@nrta.bsky.social.not-yet</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="contact-sidebar">
-                    <div class="availability-card">
-                        <h3><i class="fas fa-calendar-alt"></i> Investment Opportunity</h3>
-                        <div class="availability-item">
-                            <strong>Stage</strong>
-                            <span>Seeking Interested Partners</span>
-                        </div>
-                        <div class="availability-item">
-                            <strong>Seeking</strong>
-                            <span>Prototype funding</span>
-                        </div>
-                        <div class="availability-item">
-                            <strong>Timeline</strong>
-                            <span>Prototype by Q4 2026</span>
+                        <div class="contact-method-body">
+                            <p class="contact-label">Primary Contact</p>
+                            <a href="mailto:contact@not-yet-a-thing-email.com" class="contact-value">
+                                contact@not-yet-a-thing-email.com
+                            </a>
+                            <p class="contact-description">For partnerships, investments, and general inquiries</p>
                         </div>
                     </div>
                     
-                    <div class="availability-card">
-                        <h3><i class="fas fa-users"></i> Strategic Partnerships</h3>
-                        <div class="availability-item">
-                            <strong>Development</strong>
-                            <span>Software and hardware partners</span>
+                    <div class="contact-method-card">
+                        <div class="contact-method-header">
+                            <div class="contact-method-icon">
+                                <i class="fas fa-cloud"></i>
+                            </div>
+                            <h4>Bluesky</h4>
+                        </div>
+                        <div class="contact-method-body">
+                            <p class="contact-label">Social Media</p>
+                            <a href="#" class="contact-value">
+                                @nrta.bsky.social.not-yet
+                            </a>
+                            <p class="contact-description">Follow us for updates and announcements</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method-card">
+                        <div class="contact-method-header">
+                            <div class="contact-method-icon">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <h4>Schedule a Meeting</h4>
+                        </div>
+                        <div class="contact-method-body">
+                            <p class="contact-label">Book a Call</p>
+                            <a href="mailto:contact@not-yet-a-thing-email.com?subject=Meeting Request" class="contact-value">
+                                Request Meeting
+                            </a>
+                            <p class="contact-description">Let's discuss how we can work together</p>
                         </div>
                     </div>
                 </div>
@@ -634,31 +273,12 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <div class="footer-main">
-                <div class="footer-left">
-                    <div class="footer-logo">
-                        <img src="assets/icons/logo-icon.svg" alt="NRTA Logo" class="footer-logo-icon">
-                        <h4 class="footer-title">NRTA</h4>
-                    </div>
-                    <p class="footer-text">Next-gen Responsive Training Analytics. The world's first truly modular fitness wearable. Revolutionizing personal health monitoring through innovative, interchangeable sensor technology that adapts to your unique fitness journey.</p>
-                </div>
-                <div class="footer-right">
-                    <div class="footer-contact-simple">
-                        <h4>Join the Revolution</h4>
-                        <p>Ready to disrupt the wearable market?</p>
-                        <div class="social-links">
-                            <a href="mailto:support@nrta.com" class="animated-contact-btn">
-                                <i class="fas fa-envelope"></i>
-                                <span class="btn-text">Email Us</span>
-                                <span class="btn-pulse"></span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p class="footer-copyright">"©" 2025 NRTA. All rights reserved.</p>
-                <p class="footer-note">Revolutionary modular fitness wearable technology - New concept technology.</p>
+            <div class="footer-compact">
+                <a href="#home" class="footer-brand">
+                    <img src="assets/icons/logo-icon.svg" alt="NRTA" class="footer-logo-full">
+                    <span class="footer-year">NRTA - 2026</span>
+                </a>
+                <p class="footer-note">Workout aid + interface standard. Early-stage · licensing.</p>
             </div>
         </div>
     </footer>
